@@ -1,0 +1,2 @@
+Categoria
+MSL.Categoria
