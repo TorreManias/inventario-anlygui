@@ -15,7 +15,10 @@ public class InventarioAnlygui {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        AplicacionInventario app = new AplicacionInventario();
+        app.setVisible(true);
+        
     }
     
 }
