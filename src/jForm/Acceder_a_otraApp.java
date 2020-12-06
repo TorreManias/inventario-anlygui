@@ -15,7 +15,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
      * Creates new form Acceder_a_otraApp
      */
     
-    AplicacionInventario App = new AplicacionInventario();
+    AgregarProducto App = new AgregarProducto();
     
     public Acceder_a_otraApp() {
         initComponents();
@@ -35,9 +35,14 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mAgregarProducto = new javax.swing.JMenu();
         miApp = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -64,25 +69,42 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         );
 
         mAgregarProducto.setText("Agregar Producto");
-        mAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
+
+        miApp.setText("Agregar Nuevo");
+        miApp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mAgregarProductoActionPerformed(evt);
+                miAppActionPerformed(evt);
             }
         });
-
-        miApp.setText("AplicacionInventario");
         mAgregarProducto.add(miApp);
+
+        jMenuItem5.setText("Agregar Entrada");
+        mAgregarProducto.add(jMenuItem5);
+
+        jMenuItem6.setText("Agregar Salida");
+        mAgregarProducto.add(jMenuItem6);
 
         jMenuBar1.add(mAgregarProducto);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Eliminar Edición");
+
+        jMenuItem1.setText("Editar Producto");
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar Producto");
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("jMenu3");
-        jMenuBar1.add(jMenu3);
+        jMenu3.setText("Actualizar Buscar");
 
-        jMenu4.setText("jMenu4");
-        jMenuBar1.add(jMenu4);
+        jMenuItem3.setText("Actualizar BD");
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("Buscar Producto");
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -100,13 +122,13 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAgregarProductoActionPerformed
+    private void miAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAppActionPerformed
         // TODO add your handling code here:
         
         this.dpDes.add(this.App);
         this.App.setVisible(true);
         
-    }//GEN-LAST:event_mAgregarProductoActionPerformed
+    }//GEN-LAST:event_miAppActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,8 +170,13 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu mAgregarProducto;
     private javax.swing.JMenuItem miApp;
     // End of variables declaration//GEN-END:variables
