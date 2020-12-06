@@ -3,8 +3,6 @@ package controladores;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -16,7 +14,7 @@ public class Conexion {
     private static final String USUARIO = "poo12";
     private static final String PASSWORD = "grupo12";
     private static final String NOMBREBD = "BDAnlygui";
-    private static final String PUERTO = "1433";
+    private static final String PUERTO = "1432";
     private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
     public Connection conectar() {
@@ -24,18 +22,15 @@ public class Conexion {
         try {
 
             String URL = "jdbc:sqlserver://" + SERVIDOR + ": " + PUERTO + "; Databasename= " + NOMBREBD + "; user= " + USUARIO + "; password = " + PASSWORD + ";";
-            System.out.println(DriverManager.getConnection(URL).toString());
 
             Class.forName(DRIVER);
             return (DriverManager.getConnection(URL));
 
-        } catch (SQLException error) {
+        } catch (SQLException | ClassNotFoundException error) {
             System.out.println(error.toString());
-            return null;
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
         }
+
+        return null;
 
     }
 
