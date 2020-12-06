@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  *
  * @author Marcos Lanuza
@@ -23,15 +22,16 @@ public class Conexion {
         try {
 
             String URL = "jdbc:sqlserver://" + SERVIDOR + ": " + PUERTO + "; Databasename= " + NOMBREBD + "; user= " + USUARIO + "; password = " + PASSWORD + ";";
+
             Class.forName(DRIVER);
             
             return (DriverManager.getConnection(URL));
 
         } catch (SQLException | ClassNotFoundException error) {
-            
-            error.printStackTrace();
-            return null;
+            System.out.println(error.toString());
         }
+
+        return null;
 
     }
 

@@ -5,7 +5,6 @@
  */
 package inventarioanlygui;
 
-
 import controladores.GestionProductos;
 import jForm.Acceder_a_otraApp;
 import jForm.AgregarProducto;
@@ -21,24 +20,20 @@ public class InventarioAnlygui {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        boolean bo = true;
-        GestionProductos pro = new GestionProductos();
-        //int n = pro.insertarProducto("Mr.Musculo", 7, 14, "Clorox", 1, "Pos es cloro");
-        
-        //System.out.println(n);
-        
-        
-        AnlyguiLogIn login = new AnlyguiLogIn();
-        
-        if(bo = true){
-            
-            Acceder_a_otraApp app = new Acceder_a_otraApp();
-            app.setVisible(true);
-            
-        }
-        
-        
+
+//        boolean bo = true;
+//        GestionProductos pro = new GestionProductos();
+//        //int n = pro.insertarProducto("Mr.Musculo", 7, 14, "Clorox", 1, "Pos es cloro");
+//
+//        //System.out.println(n);
+//        AnlyguiLogIn login = new AnlyguiLogIn();
+//
+//        if (bo = true) {
+//
+        Acceder_a_otraApp app = new Acceder_a_otraApp();
+        app.setVisible(true);
+//
+//        }
     }
-    
+
 }
