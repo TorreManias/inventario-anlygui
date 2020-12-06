@@ -5,6 +5,7 @@
  */
 package inventarioanlygui;
 
+import jForm.AplicacionInventario;
 import controladores.GestionProductos;
 
 /**
@@ -20,9 +21,9 @@ public class InventarioAnlygui {
         
         
         GestionProductos pro = new GestionProductos();
-        int n = pro.insertarProducto("Clorox", 7, 14, "Clorox", 1, "Pos es cloro");
+        //int n = pro.insertarProducto("Mr.Musculo", 7, 14, "Clorox", 1, "Pos es cloro");
         
-        System.out.println(n);
+        //System.out.println(n);
         
         AplicacionInventario app = new AplicacionInventario();
         app.setVisible(true);

@@ -1,2 +1,0 @@
-MSL.Entrada
-Entrada
