@@ -81,9 +81,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -95,12 +96,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblNombre" max="32767" attributes="0"/>
-                          <Component id="lbliD" pref="299" max="32767" attributes="0"/>
-                          <Component id="lblMarca" alignment="0" pref="299" max="32767" attributes="0"/>
-                          <Component id="lblPrecioVenta" alignment="0" pref="299" max="32767" attributes="0"/>
-                          <Component id="lblPrecioCompra" alignment="0" pref="299" max="32767" attributes="0"/>
-                          <Component id="lblCategoría" alignment="1" pref="299" max="32767" attributes="0"/>
+                          <Component id="lbliD" pref="301" max="32767" attributes="0"/>
+                          <Component id="lblMarca" alignment="0" pref="301" max="32767" attributes="0"/>
+                          <Component id="lblPrecioVenta" alignment="0" pref="301" max="32767" attributes="0"/>
+                          <Component id="lblPrecioCompra" alignment="0" pref="301" max="32767" attributes="0"/>
+                          <Component id="lblCategoría" alignment="1" pref="301" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -138,6 +140,11 @@
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="jLabel6" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="lblCategoría" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -234,6 +241,16 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel15">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cantidad en existencia:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NA"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -285,16 +302,18 @@
                                   <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" pref="328" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="330" max="32767" attributes="0"/>
                                   <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTextField2" max="32767" attributes="0"/>
                                   <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtCantidadExistencia" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -340,12 +359,17 @@
                           <Component id="jTextField6" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="jLabel17" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCantidadExistencia" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" pref="301" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="316" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -421,6 +445,13 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar nuevos datos"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel17">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cantidad en existencia:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCantidadExistencia">
             </Component>
           </SubComponents>
         </Container>

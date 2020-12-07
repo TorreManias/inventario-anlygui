@@ -2,92 +2,97 @@ package inventarioanlygui;
 
 public class Producto {
 
-	private String descripcion;
-	private int id;
-	private String marca;
-	private String nombre;
-	private float precioCompra;
-	private float precioVenta;
-	public Categoria m_Categoria;
+    private String descripcion;
+    private int id;
+    private String marca;
+    private String nombre;
+    private float precioCompra;
+    private float precioVenta;
+    private int cantidad;
 
-	public Producto(){
+    public Categoria m_Categoria;
 
-	}
+    // Constructores
+    
+    public Producto() {}
 
-	public void finalize() throws Throwable {
+    public Producto(String descripcion, int id, String marca, String nombre, float precioCompra, float precioVenta, int cantidad, Categoria m_Categoria) {
+        this.descripcion = descripcion;
+        this.id = id;
+        this.marca = marca;
+        this.nombre = nombre;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;
+        this.cantidad = cantidad;
+        this.m_Categoria = m_Categoria;
+    }
+    
+    // Getters y Setters
 
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public String getdescripcion(){
-		return descripcion;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public int getid(){
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getmarca(){
-		return marca;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getnombre(){
-		return nombre;
-	}
+    public String getMarca() {
+        return marca;
+    }
 
-	public float getprecioCompra(){
-		return precioCompra;
-	}
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
-	public float getprecioVenta(){
-		return precioVenta;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setdescripcion(String newVal){
-		descripcion = newVal;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setid(int newVal){
-		id = newVal;
-	}
+    public float getPrecioCompra() {
+        return precioCompra;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setmarca(String newVal){
-		marca = newVal;
-	}
+    public void setPrecioCompra(float precioCompra) {
+        this.precioCompra = precioCompra;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setnombre(String newVal){
-		nombre = newVal;
-	}
+    public float getPrecioVenta() {
+        return precioVenta;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setprecioCompra(float newVal){
-		precioCompra = newVal;
-	}
+    public void setPrecioVenta(float precioVenta) {
+        this.precioVenta = precioVenta;
+    }
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setprecioVenta(float newVal){
-		precioVenta = newVal;
-	}
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Categoria getM_Categoria() {
+        return m_Categoria;
+    }
+
+    public void setM_Categoria(Categoria m_Categoria) {
+        this.m_Categoria = m_Categoria;
+    }
+    
+    // Métodos propios
 
 }

@@ -43,6 +43,8 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
         JAgregarE = new javax.swing.JButton();
 
         setClosable(true);
+        setResizable(true);
+        setTitle("Añadir entrada");
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel37.setText("Id:");
@@ -59,7 +61,7 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel41.setText("Categoria:");
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Cantidad:");
 
         JAgregarE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Grupo 2.png"))); // NOI18N
@@ -70,23 +72,26 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel38)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel37)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel41)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfPrecioCompra)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.Alignment.TRAILING, 0, 139, Short.MAX_VALUE)
-                    .addComponent(tfID)
-                    .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfMarca, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfCantidad))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel38)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel41))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfPrecioCompra)
+                            .addComponent(cmbCategoria, javax.swing.GroupLayout.Alignment.TRAILING, 0, 139, Short.MAX_VALUE)
+                            .addComponent(tfID)
+                            .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfMarca, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfCantidad)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
