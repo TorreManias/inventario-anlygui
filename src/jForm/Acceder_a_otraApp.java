@@ -14,11 +14,12 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     /**
      * Creates new form Acceder_a_otraApp
      */
-    
     AgregarProducto app = new AgregarProducto();
     EliminarP eli = new EliminarP();
     AgregarEntradaP agre = new AgregarEntradaP();
-    
+    EdiarProducto edicion = new EdiarProducto();
+    CrearCategoria nueva_categoria = new CrearCategoria();
+
     public Acceder_a_otraApp() {
         initComponents();
     }
@@ -41,6 +42,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mAgregarProducto = new javax.swing.JMenu();
         miApp = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -130,6 +132,14 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         });
         mAgregarProducto.add(miApp);
 
+        jMenuItem7.setText("Nueva categoría");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        mAgregarProducto.add(jMenuItem7);
+
         jMenuItem5.setText("Agregar Entrada");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,34 +201,42 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void miAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAppActionPerformed
         // TODO add your handling code here:
-        
+
         this.dpDes.add(this.app);
         this.app.setVisible(true);
-        
+
     }//GEN-LAST:event_miAppActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        
-     
-        
+        // Editar productos
+
+        this.dpDes.add(this.edicion);
+        this.edicion.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        
+
         this.dpDes.add(this.eli);
         this.eli.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-        
+
         this.dpDes.add(this.agre);
         this.agre.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // Nueva categoría
+
+        this.dpDes.add(this.nueva_categoria);
+        this.nueva_categoria.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +286,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu mAgregarProducto;
