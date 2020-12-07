@@ -182,6 +182,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
             producto.setmarca(tfMarca.getText());
             producto.setprecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
             
+            // Insertar la opción del comboBox
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error introduciendo valores.", "Error", JOptionPane.ERROR_MESSAGE);
