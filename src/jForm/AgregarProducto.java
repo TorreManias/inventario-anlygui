@@ -6,6 +6,7 @@
 package jForm;
 
 import inventarioanlygui.Producto;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,11 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     Producto producto;
 
-    public AgregarProducto() {
+    public AgregarProducto(DefaultComboBoxModel lista) {
+
         initComponents();
+        cmbCategoria.setModel(lista);
+
     }
 
     /**
@@ -148,20 +152,18 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(474, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addContainerGap())
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(480, 480, 480)
+                .addComponent(btnGuardar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addContainerGap())
+                .addGap(84, 84, 84)
+                .addComponent(btnGuardar))
         );
 
         pack();
@@ -173,15 +175,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         producto = new Producto();
 
         try {
-            
-            producto.setId(Integer.parseInt(tfID.getText()));
-            producto.setNombre(tfNombre.getText());
-            producto.setMarca(tfMarca.getText());
-            producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
-            
-            // Insertar la opción del comboBox
-            
 
+            // Insertar la opción del comboBox
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error introduciendo valores.", "Error", JOptionPane.ERROR_MESSAGE);
         }
