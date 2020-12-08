@@ -21,6 +21,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     CrearCategoria nueva_categoria = new CrearCategoria();
     AvisoActualización act_aviso = new AvisoActualización();
     BuscadorProducto buscador = new BuscadorProducto();
+    AgregarSalida agrS = new AgregarSalida();
 
     public Acceder_a_otraApp() {
         initComponents();
@@ -163,6 +164,11 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         mAgregarProducto.add(jMenuItem5);
 
         jMenuItem6.setText("Agregar Salida");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         mAgregarProducto.add(jMenuItem6);
 
         jMenuBar1.add(mAgregarProducto);
@@ -277,6 +283,14 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         this.buscador.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        
+        this.dpDes.add(agrS);
+        this.agrS.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,8 +4,6 @@ public class Entrada {
 
     private float cantidad;
     private String fecha;
-    private String observacion;
-    private float precio;
     public Producto m_Producto;
 
     public Entrada() {
@@ -24,13 +22,6 @@ public class Entrada {
         return fecha;
     }
 
-    public String getobservacion() {
-        return observacion;
-    }
-
-    public float getprecio() {
-        return precio;
-    }
 
     /**
      *
@@ -52,16 +43,10 @@ public class Entrada {
      *
      * @param newVal
      */
-    public void setobservacion(String newVal) {
-        observacion = newVal;
-    }
 
     /**
      *
      * @param newVal
      */
-    public void setprecio(float newVal) {
-        precio = newVal;
-    }
 
 }

@@ -174,10 +174,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
         try {
             
-            producto.setid(Integer.parseInt(tfID.getText()));
-            producto.setnombre(tfNombre.getText());
-            producto.setmarca(tfMarca.getText());
-            producto.setprecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
+            producto.setId(Integer.parseInt(tfID.getText()));
+            producto.setNombre(tfNombre.getText());
+            producto.setMarca(tfMarca.getText());
+            producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
             
             // Insertar la opción del comboBox
             
