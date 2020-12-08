@@ -24,6 +24,7 @@ public class Conexion {
             String URL = "jdbc:sqlserver://" + SERVIDOR + ": " + PUERTO + "; Databasename= " + NOMBREBD + "; user= " + USUARIO + "; password = " + PASSWORD + ";";
 
             Class.forName(DRIVER);
+            
             return (DriverManager.getConnection(URL));
 
         } catch (SQLException | ClassNotFoundException error) {
@@ -37,7 +38,8 @@ public class Conexion {
     public void cerrarConexion(Connection conexion) {
         try {
             conexion.close();
-        } catch (SQLException e) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

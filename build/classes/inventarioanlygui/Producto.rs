@@ -1,2 +1,0 @@
-Producto
-MSL.Producto

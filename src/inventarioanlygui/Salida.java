@@ -1,67 +1,51 @@
 package inventarioanlygui;
+
 public class Salida {
 
-	private float cantidad;
-	private String fecha;
-	private String observacion;
-	private float precio;
-	public Producto m_Producto;
+    private float cantidad;
+    private String fecha;
+    public Producto m_Producto;
 
-	public Salida(){
+    public Salida() {
 
-	}
+    }
 
+    public int calcularMonto() {
+        return 0;
+    }
 
-	public int calcularMonto(){
-		return 0;
-	}
+    public float getcantidad() {
+        return cantidad;
+    }
 
-	public float getcantidad(){
-		return cantidad;
-	}
+    public String getfecha() {
+        return fecha;
+    }
 
-	public String getfecha(){
-		return fecha;
-	}
+    /**
+     *
+     * @param newVal
+     */
+    public void setcantidad(float newVal) {
+        cantidad = newVal;
+    }
 
-	public String getobservacion(){
-		return observacion;
-	}
+    /**
+     *
+     * @param newVal
+     */
+    public void setfecha(String newVal) {
+        fecha = newVal;
+    }
 
-	public float getprecio(){
-		return precio;
-	}
+    /**
+     *
+     * @param newVal
+     */
+    
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setcantidad(float newVal){
-		cantidad = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setfecha(String newVal){
-		fecha = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setobservacion(String newVal){
-		observacion = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setprecio(float newVal){
-		precio = newVal;
-	}
-
+    /**
+     *
+     * @param newVal
+     */
 }
