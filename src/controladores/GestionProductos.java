@@ -21,7 +21,7 @@ public class GestionProductos extends Conexion {
 
             coneccionDB = this.conectar(); // Guardamos la conexion
             System.out.println(coneccionDB.toString());
-            insertarProducto = coneccionDB.prepareStatement("INSERT into dbo.Producto(nombre, precioCompra, precioVenta, marca, categoria, descripcion) VALUES (?,?,?,?,?,?)");
+            insertarProducto = coneccionDB.prepareStatement("INSERT into dbo.Producto(nombre, precioCompra, precioVenta, marca, categoria, cantidad, descripcion) VALUES (?,?,?,?,?,?,?)");
 
         } catch (SQLException ex) {
             Logger.getLogger(GestionProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -29,7 +29,7 @@ public class GestionProductos extends Conexion {
 
     }
 
-    public int insertarProducto(String nombre, float pCompra, float pVenta, String marca, int cat, String desc) {
+    public int insertarProducto(String nombre, float pCompra, float pVenta, String marca, int cat, int cantidad, String desc) {
         int result = 0;
 
         try {
@@ -39,7 +39,8 @@ public class GestionProductos extends Conexion {
             insertarProducto.setFloat(3, pVenta);
             insertarProducto.setString(4, marca);
             insertarProducto.setInt(5, cat);
-            insertarProducto.setString(6, desc);
+            insertarProducto.setInt(6, cantidad);
+            insertarProducto.setString(7, desc);
 
             result = insertarProducto.executeUpdate();
 
