@@ -41,6 +41,9 @@ public class TblProducto extends Conexion {
 
     public void agregarProducto(Producto pro) {
         lista_productos.add(pro);
+        
+        System.out.println("Id: " + lista_productos.get(0).getId());
+       
     }
 
     public Producto buscarProducto() {
@@ -63,8 +66,25 @@ public class TblProducto extends Conexion {
         return null;
     }
 
-    public float sumarEntradas() {
-        return 0;
+    public int sumarEntradas(int id, int cant) {
+        
+        int idlista = 0, cantidadlista = 0;
+        System.out.println("Si");
+        
+        for(Producto pro : this.getLista_productos()){
+            
+            idlista = pro.getId();
+            System.out.println("Id: " + idlista);
+            if(id == idlista){
+                
+                cantidadlista = pro.getId();
+                cantidadlista = cantidadlista + cant;
+                
+            }
+            
+        }
+        
+        return cantidadlista;
     }
 
     public float sumarSalidad() {
