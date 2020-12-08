@@ -5,10 +5,12 @@
  */
 package jForm;
 
+import controladores.TblProducto;
 import inventarioanlygui.Categoria;
 import inventarioanlygui.Producto;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.text.TabExpander;
 
 /**
  *
@@ -18,12 +20,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     Producto producto;
     Categoria cate;
-    
+    TblProducto tbl;
 
     public AgregarProducto(DefaultComboBoxModel lista) {
 
         initComponents();
         cmbCategoria.setModel(lista);
+        tbl = new TblProducto();
 
     }
     
@@ -195,7 +198,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
         // TODO add your handling code here:
-        
+        producto = new Producto();
         producto.setId(Integer.parseInt(tfID.getText()));
         producto.setNombre(tfNombre.getText());
         producto.setCantidad(Integer.parseInt(tfCantidad.getText()));
@@ -204,6 +207,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
         producto.setPrecioVenta(Float.parseFloat(tfPrecioCompra.getText()));
         producto.m_Categoria.setnombre((String) cmbCategoria.getSelectedItem());
+        
+        tbl.agregarProducto(producto);
         
         JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
                 "Producto agregado",
