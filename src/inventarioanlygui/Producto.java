@@ -6,17 +6,19 @@ public class Producto {
     private int id;
     private String marca;
     private String nombre;
-    private float precioCompra;
-    private float precioVenta;
+    private double precioCompra;
+    private double precioVenta;
     private int cantidad;
 
     public Categoria m_Categoria;
 
     // Constructores
     
-    public Producto() {}
+    public Producto() {
+        m_Categoria = new Categoria();
+    }
 
-    public Producto(String descripcion, int id, String marca, String nombre, float precioCompra, float precioVenta, int cantidad, Categoria m_Categoria) {
+    public Producto(String descripcion, int id, String marca, String nombre, double precioCompra, double precioVenta, int cantidad, Categoria m_Categoria) {
         this.descripcion = descripcion;
         this.id = id;
         this.marca = marca;
@@ -61,7 +63,7 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public float getPrecioCompra() {
+    public double getPrecioCompra() {
         return precioCompra;
     }
 
@@ -69,7 +71,7 @@ public class Producto {
         this.precioCompra = precioCompra;
     }
 
-    public float getPrecioVenta() {
+    public double getPrecioVenta() {
         return precioVenta;
     }
 

@@ -36,4 +36,11 @@ public class Categoria {
         nombre = newVal;
     }
 
+    @Override
+    public String toString() {
+        return "Categoria{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+    
+    
+
 }

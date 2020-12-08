@@ -5,6 +5,9 @@
  */
 package jForm;
 
+import controladores.ServicioDeArranque;
+import controladores.TblCategoria;
+
 /**
  *
  * @author Andrea Wood
@@ -14,7 +17,10 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     /**
      * Creates new form Acceder_a_otraApp
      */
-    AgregarProducto app = new AgregarProducto();
+    TblCategoria lista = new TblCategoria();
+
+    AgregarProducto app;
+
     EliminarP eli = new EliminarP();
     AgregarEntradaP agre = new AgregarEntradaP();
     EdiarProducto edicion = new EdiarProducto();
@@ -23,8 +29,15 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
 
+    ServicioDeArranque arranque = new ServicioDeArranque();
+
     public Acceder_a_otraApp() {
+
+        app = new AgregarProducto(arranque.obtenerListaDeCategorias());
+
         initComponents();
+
+
     }
 
     /**
@@ -40,7 +53,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         dpDes = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        javax.swing.JTable jTPInfo = new javax.swing.JTable();
+        javax.swing.JTable tableProductos = new javax.swing.JTable();
         jLabel44 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mAgregarProducto = new javax.swing.JMenu();
@@ -70,27 +83,11 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jTPInfo.setAutoCreateRowSorter(true);
-        jTPInfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTPInfo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "iD", "Nombre", "Marca", "Precio venta", "Precio compra", "Cantidad", "Descripción"
-            }
-        ));
-        jTPInfo.setGridColor(new java.awt.Color(204, 255, 204));
-        jScrollPane1.setViewportView(jTPInfo);
+        tableProductos.setAutoCreateRowSorter(true);
+        tableProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tableProductos.setModel(arranque.obtenerListaDeProductos());
+        tableProductos.setGridColor(new java.awt.Color(204, 255, 204));
+        jScrollPane1.setViewportView(tableProductos);
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel44.setText("Productos");
@@ -278,18 +275,18 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // Abre el menú de búsqueda de productos
-        
+
         this.dpDes.add(this.buscador);
         this.buscador.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        
+
         this.dpDes.add(agrS);
         this.agrS.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**

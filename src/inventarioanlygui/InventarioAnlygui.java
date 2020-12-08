@@ -21,19 +21,13 @@ public class InventarioAnlygui {
      */
     public static void main(String[] args) {
 
-//        boolean bo = true;
 //        GestionProductos pro = new GestionProductos();
-//        //int n = pro.insertarProducto("Mr.Musculo", 7, 14, "Clorox", 1, "Pos es cloro");
-//
-//        //System.out.println(n);
-//        AnlyguiLogIn login = new AnlyguiLogIn();
-//
-//        if (bo = true) {
-//
+//        int n = pro.insertarProducto("Mr.Musculo", 7, 14, "Clorox", 50, 1, "Pos es cloro");
+//        System.out.println(n);
+
         Acceder_a_otraApp app = new Acceder_a_otraApp();
         app.setVisible(true);
-//
-//        }
+
     }
 
 }
