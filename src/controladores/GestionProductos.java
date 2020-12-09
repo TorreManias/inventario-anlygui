@@ -3,11 +3,14 @@ package controladores;
 import inventarioanlygui.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +21,8 @@ public class GestionProductos extends Conexion {
     Connection coneccionDB;
     private PreparedStatement insertarProducto;
     private PreparedStatement actualizarProductos;
+    private PreparedStatement buscarProductoPorID;
+    private PreparedStatement buscarProductoPorNombre;
 
     public GestionProductos() {
 
@@ -29,11 +34,81 @@ public class GestionProductos extends Conexion {
             actualizarProductos = coneccionDB.prepareStatement("UPDATE dbo.Producto "
                     + "SET id = ?, nombre = ?, precioCompra = ?, precioVenta = ?, marca = ?, categoria = ?, cantidad = ?, descripcion = ? "
                     + "WHERE id = ?");
+            buscarProductoPorID = coneccionDB.prepareStatement("SELECT * from dbo.Producto WHERE id = ?");
+            buscarProductoPorNombre = coneccionDB.prepareStatement("SELECT * from dbo.Producto WHERE nombre = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(GestionProductos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public DefaultTableModel buscarPorID(int ID) {
+        DefaultTableModel resultado = new DefaultTableModel();
+
+        Object[] filas = new Object[8]; // Contendrá las filas de la tabla
+        String[] titulos_tabla = {"iD", "Nombre", "Marca", "Precio Venta", "Precio compra", "Categoría", "Cantidad", "Descripción"};
+        resultado.setColumnIdentifiers(titulos_tabla);
+
+        try {
+            buscarProductoPorID.setInt(1, ID);
+            ResultSet resultado_busqueda = buscarProductoPorID.executeQuery();
+
+            // Crear un modelo de tabla nuevo.
+            while (resultado_busqueda.next()) {
+
+                filas[0] = resultado_busqueda.getInt("id");
+                filas[1] = resultado_busqueda.getString("nombre");
+                filas[2] = resultado_busqueda.getString("marca");
+                filas[3] = resultado_busqueda.getFloat("precioCompra");
+                filas[4] = resultado_busqueda.getFloat("precioVenta");
+                filas[5] = resultado_busqueda.getString("categoria");
+                filas[6] = resultado_busqueda.getInt("cantidad");
+                filas[7] = resultado_busqueda.getString("descripcion");
+
+                resultado.addRow(filas);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error evaluando la consulta", "Error", 0);
+            System.out.println(e.toString());
+        }
+
+        return resultado;
+    }
+
+    public DefaultTableModel buscarPorNombre(String nombre_producto) {
+        DefaultTableModel resultado = new DefaultTableModel();
+
+        Object[] filas = new Object[8]; // Contendrá las filas de la tabla
+        String[] titulos_tabla = {"iD", "Nombre", "Marca", "Precio Venta", "Precio compra", "Categoría", "Cantidad", "Descripción"};
+        resultado.setColumnIdentifiers(titulos_tabla);
+
+        try {
+            buscarProductoPorNombre.setString(1, nombre_producto);
+            ResultSet resultado_busqueda = buscarProductoPorNombre.executeQuery();
+
+            // Crear un modelo de tabla nuevo.
+            while (resultado_busqueda.next()) {
+
+                filas[0] = resultado_busqueda.getInt("id");
+                filas[1] = resultado_busqueda.getString("nombre");
+                filas[2] = resultado_busqueda.getString("marca");
+                filas[3] = resultado_busqueda.getFloat("precioCompra");
+                filas[4] = resultado_busqueda.getFloat("precioVenta");
+                filas[5] = resultado_busqueda.getString("categoria");
+                filas[6] = resultado_busqueda.getInt("cantidad");
+                filas[7] = resultado_busqueda.getString("descripcion");
+
+                resultado.addRow(filas);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error evaluando la consulta", "Error", 0);
+            System.out.println(e.toString());
+        }
+
+        return resultado;
     }
 
     public String actualizarBDConProductos(ArrayList<Producto> lista) {
@@ -83,7 +158,7 @@ public class GestionProductos extends Conexion {
 
             }
         }
-        
+
         resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos;
         return resultado;
     }

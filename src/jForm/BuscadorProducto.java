@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package jForm;
+import controladores.GestionProductos;
 
 /**
  *
@@ -11,11 +12,16 @@ package jForm;
  */
 public class BuscadorProducto extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form BuscadorProducto
-     */
+    GestionProductos buscador;
+    
     public BuscadorProducto() {
         initComponents();
+
+        tfNombre.setEnabled(false);
+        tfiD.setEnabled(false);
+
+        buscarPorNombre.setEnabled(false);
+        buscarPorId.setEnabled(false);
     }
 
     /**
@@ -27,27 +33,50 @@ public class BuscadorProducto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnNombre = new javax.swing.JRadioButton();
+        btnID = new javax.swing.JRadioButton();
+        tfNombre = new javax.swing.JTextField();
+        tfiD = new javax.swing.JTextField();
+        buscarPorNombre = new javax.swing.JButton();
+        buscarPorId = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaResultados = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Búsqueda de productos");
 
-        jRadioButton1.setText("Búsqueda por nombre");
+        buttonGroup1.add(btnNombre);
+        btnNombre.setText("Búsqueda por nombre");
+        btnNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNombreActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("Búsqueda por ID");
+        buttonGroup1.add(btnID);
+        btnID.setText("Búsqueda por ID");
+        btnID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIDActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Buscar");
+        buscarPorNombre.setText("Buscar");
+        buscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPorNombreActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Buscar");
+        buscarPorId.setText("Buscar");
+        buscarPorId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPorIdActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -66,7 +95,7 @@ public class BuscadorProducto extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaResultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,16 +107,16 @@ public class BuscadorProducto extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 943, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(btnNombre)
+                            .addComponent(btnID))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
+                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(tfiD))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
+                            .addComponent(buscarPorId)
+                            .addComponent(buscarPorNombre))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -96,14 +125,14 @@ public class BuscadorProducto extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnNombre)
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorNombre))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnID)
+                    .addComponent(tfiD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPorId))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -112,15 +141,51 @@ public class BuscadorProducto extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNombreActionPerformed
+        // Se activa el radioButton de búsqueda por nombre
+        tfNombre.setEnabled(true);
+        tfiD.setEnabled(false);
+
+        buscarPorNombre.setEnabled(true);
+        buscarPorId.setEnabled(false);
+    }//GEN-LAST:event_btnNombreActionPerformed
+
+    private void btnIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIDActionPerformed
+        // Se activa el radioButton de búsqueda por ID
+        tfNombre.setEnabled(false);
+        tfiD.setEnabled(true);
+
+        buscarPorNombre.setEnabled(false);
+        buscarPorId.setEnabled(true);
+    }//GEN-LAST:event_btnIDActionPerformed
+
+    private void buscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorNombreActionPerformed
+        // Búsqueda por nombre
+        String nombre_producto = tfNombre.getText();
+        
+        buscador = new GestionProductos();
+        tablaResultados.setModel(buscador.buscarPorNombre(nombre_producto));
+    }//GEN-LAST:event_buscarPorNombreActionPerformed
+
+    private void buscarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPorIdActionPerformed
+        // Búsqueda por ID
+        int id = Integer.parseInt(tfiD.getText());
+        
+        buscador = new GestionProductos();
+        tablaResultados.setModel(buscador.buscarPorID(id));
+        
+    }//GEN-LAST:event_buscarPorIdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton btnID;
+    private javax.swing.JRadioButton btnNombre;
+    private javax.swing.JButton buscarPorId;
+    private javax.swing.JButton buscarPorNombre;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable tablaResultados;
+    private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfiD;
     // End of variables declaration//GEN-END:variables
 }
