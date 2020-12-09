@@ -32,9 +32,9 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     ServicioDeArranque arranque = new ServicioDeArranque();
 
     public Acceder_a_otraApp() {
-
-        app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.obtenerListaDeProductos());
+        app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.getTabla());
         initComponents();
+        
         sdf.setModel(arranque.obtenerListaDeProductos());
 
     }

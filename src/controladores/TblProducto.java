@@ -1,7 +1,12 @@
 package controladores;
 
 import inventarioanlygui.Producto;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,6 +18,11 @@ public class TblProducto extends Conexion {
     public Producto m_Producto;
     private ArrayList<Producto> lista_productos;
 
+    Connection coneccionDB;
+    private PreparedStatement insertarProducto;
+    
+    
+    ServicioDeArranque ser;
     public TblProducto() {
 
         lista_productos = new ArrayList<>();
@@ -42,7 +52,9 @@ public class TblProducto extends Conexion {
     }
 
     public void agregarProducto(Producto pro) {
-        lista_productos.add(pro);
+        
+       lista_productos.add(pro);
+        
     }
 
     public Producto buscarProducto() {
@@ -71,7 +83,7 @@ public class TblProducto extends Conexion {
         fila[2] = p.getMarca();
         fila[3] = p.getPrecioCompra();
         fila[4] = p.getPrecioCompra();
-        fila[5] = p.m_Categoria.getid();
+        fila[5] = p.m_Categoria.getnombre();
         fila[6] = p.getCantidad();
         fila[7] = p.getDescripcion();
 
@@ -85,16 +97,19 @@ public class TblProducto extends Conexion {
 
     public int sumarEntradas(int id, int cant) {
 
-        int idlista = 0, cantidadlista = 0;
+        ser = new ServicioDeArranque();
+        ser.obtenerListaDeProductos();
+        
+        int idlista, cantidadlista = 0;
         System.out.println("Si");
 
-        for (Producto pro : this.getLista_productos()) {
+        for (Producto pro : this.ser.cuaderno_productos.getLista_productos()) {
 
             idlista = pro.getId();
             System.out.println("Id: " + idlista);
             if (id == idlista) {
 
-                cantidadlista = pro.getId();
+                cantidadlista = pro.getCantidad();
                 cantidadlista = cantidadlista + cant;
 
             }
@@ -104,8 +119,28 @@ public class TblProducto extends Conexion {
         return cantidadlista;
     }
 
-    public float sumarSalidad() {
-        return 0;
+    public int sumarSalidad(int id, int cant) {
+        
+        ser = new ServicioDeArranque();
+        ser.obtenerListaDeProductos();
+        
+        int idlista, cantidadlista = 0;
+        System.out.println("Si");
+
+        for (Producto pro : this.ser.cuaderno_productos.getLista_productos()) {
+
+            idlista = pro.getId();
+            System.out.println("Id: " + idlista);
+            if (id == idlista) {
+
+                cantidadlista = pro.getCantidad();
+                cantidadlista = cantidadlista - cant;
+
+            }
+
+        }
+
+        return cantidadlista;
     }
 
 }

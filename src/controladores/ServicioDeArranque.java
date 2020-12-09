@@ -25,6 +25,7 @@ public class ServicioDeArranque extends Conexion {
 
     // Tabla de productos
     DefaultTableModel tabla;
+    
 
     // Conexion
     Connection conexion;
@@ -41,7 +42,7 @@ public class ServicioDeArranque extends Conexion {
 
         cuaderno_productos = new TblProducto();
         cuaderno_categorias = new TblCategoria();
-        tabla = new DefaultTableModel();
+       
 
     }
 
@@ -60,32 +61,19 @@ public class ServicioDeArranque extends Conexion {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
 
         try {
-
+            
+            c = new Categoria();
             Statement listar = conexionCategorias.createStatement();
             ResultSet consulta_cateogrias = listar.executeQuery(seleccionar_categorias);
-
-            while (consulta_cateogrias.next()) {
-
-                c = new Categoria();
-
-                for (int i = 1; i < 3; i++) {
-
-                    switch (i) {
-                        case 1:
-                            c.setid((int) consulta_cateogrias.getObject(i));
-                            break;
-
-                        case 2:
-                            c.setnombre((String) consulta_cateogrias.getObject(i));
-                            break;
-                    }
-
-                }
-
-                this.cuaderno_categorias.agregarCategoria(c);
+            while(consulta_cateogrias.next()){
+                
+                c.setnombre((String) consulta_cateogrias.getObject(1));
+                cuaderno_categorias.agregarCategoria(c);
                 modelo.addElement(c.getnombre());
             }
-
+            
+            
+            
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -97,7 +85,8 @@ public class ServicioDeArranque extends Conexion {
     public DefaultTableModel obtenerListaDeProductos() {
 
         Connection conexionProductos = this.conectar();
-
+        DefaultTableModel unnombre = new DefaultTableModel();
+        
         try {
 
             Statement listar = conexionProductos.createStatement();
@@ -117,16 +106,19 @@ public class ServicioDeArranque extends Conexion {
                 p.setPrecioVenta((float) pv);
 
                 p.setMarca((String) consulta_productos.getObject(5));
-                p.m_Categoria.setid((int) consulta_productos.getObject(6));
+                p.m_Categoria.setnombre((String) consulta_productos.getObject(6));
                 p.setCantidad((int) consulta_productos.getObject(7));
                 p.setDescripcion((String) consulta_productos.getObject(8));
-
-                this.cuaderno_productos.agregarProducto(p);
+                
+                p.setEstado(1);
+                
+                cuaderno_productos.getLista_productos().add(p);
 
             }
+            System.out.println("Cuaderno de producto " + cuaderno_productos.getLista_productos().toString());
 
             String[] titulos_tabla = {"iD", "Nombre", "Marca", "Precio Venta", "Precio compra", "Categoría", "Cantidad", "Descripción"};
-            tabla.setColumnIdentifiers(titulos_tabla);
+            unnombre.setColumnIdentifiers(titulos_tabla);
 
             for (Producto p : this.cuaderno_productos.getLista_productos()) {
 
@@ -137,19 +129,20 @@ public class ServicioDeArranque extends Conexion {
                 fila[2] = p.getMarca();
                 fila[3] = p.getPrecioVenta();
                 fila[4] = p.getPrecioCompra();
-                fila[5] = p.m_Categoria.getid();
+                fila[5] = p.m_Categoria.getnombre();
                 fila[6] = p.getCantidad();
                 fila[7] = p.getDescripcion();
 
-                tabla.addRow(fila);
+                unnombre.addRow(fila);
 
+                
             }
 
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-
-        return tabla;
+        setTabla(unnombre);
+        return unnombre;
 
     }
 

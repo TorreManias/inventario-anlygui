@@ -123,14 +123,19 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
     private void JAgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarEActionPerformed
         // TODO add your handling code here:
        
+        try{
         int id, cant, cantidadT;
         id = Integer.parseInt(tfID.getText());
         ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
         cant = (int) ent.getcantidad();
         ent.setfecha(tfFecha.getText());
-        
         cantidadT = tbl.sumarEntradas(id, cant);
         JOptionPane.showMessageDialog(null, cantidadT);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_JAgregarEActionPerformed
 
 
