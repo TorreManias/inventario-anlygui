@@ -5,6 +5,7 @@
  */
 package jForm;
 
+import controladores.TblEntrada;
 import controladores.TblProducto;
 import inventarioanlygui.Entrada;
 import inventarioanlygui.Producto;
@@ -20,11 +21,12 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
      * Creates new form AgregarEntradaP
      */
     Producto pro = new Producto();
-    Entrada ent = new Entrada();
+    TblEntrada ent;
     TblProducto tbl = new TblProducto();
     
     public AgregarEntradaP() {
         initComponents();
+        ent = new TblEntrada();
     }
 
     /**
@@ -125,12 +127,19 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
        
         int id, cant, cantidadT;
         id = Integer.parseInt(tfID.getText());
-        ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
-        cant = (int) ent.getcantidad();
-        ent.setfecha(tfFecha.getText());
+        String fecha;
+        
+        cant = Integer.parseInt(tfCantidad.getText());
+        fecha = tfFecha.getText();
+        
+        
+        ent.agregarEntrada(cant, fecha);
         
         cantidadT = tbl.sumarEntradas(id, cant);
+        
         JOptionPane.showMessageDialog(null, cantidadT);
+        JOptionPane.showMessageDialog(null, "Entrada agregada correctamente");
+        
     }//GEN-LAST:event_JAgregarEActionPerformed
 
 

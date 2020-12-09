@@ -206,7 +206,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         producto.setDescripcion(tfDescripcion.getText());
         producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
         producto.setPrecioVenta(Float.parseFloat(tfPrecioCompra.getText()));
-        producto.m_Categoria.setnombre((String) cmbCategoria.getSelectedItem());
+        producto.m_Categoria.setid(9);
         
         tbl.agregarProducto(producto);
         

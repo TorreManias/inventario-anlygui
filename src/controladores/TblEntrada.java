@@ -14,16 +14,19 @@ public class TblEntrada extends Conexion {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	/**
 	 * 
-	 * @param p
+     * @param cant
+     * @param fecha
+     * @return 
 	 */
-	public int agregarEntrada(Producto p){
-		return 0;
+	public int agregarEntrada(int cant, String fecha){
+            int cantidad;
+            cantidad = cant;
+            String fe;
+            fe = fecha;
+            
+            return cantidad;
 	}
 
 }

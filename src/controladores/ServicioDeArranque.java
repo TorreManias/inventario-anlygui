@@ -110,7 +110,7 @@ public class ServicioDeArranque extends Conexion {
                 p.setCantidad((int) consulta_productos.getObject(7));
                 p.setDescripcion((String) consulta_productos.getObject(8));
 
-                this.cuaderno_productos.agregarProducto(p);
+                this.cuaderno_productos.getLista_productos().add(p);
 
             }
 
