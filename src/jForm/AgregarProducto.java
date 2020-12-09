@@ -28,14 +28,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     ServicioDeArranque actualizarTabla;
     DefaultTableModel tabla_a_actualizar;
     ServicioDeArranque arranque;
-    
+
     public AgregarProducto(DefaultComboBoxModel lista, DefaultTableModel tabla_modelo) {
 
         initComponents();
         cmbCategoria.setModel(lista);
         this.tabla_a_actualizar = tabla_modelo;
         tbl = new TblProducto();
-        
+
     }
 
     public DefaultTableModel getTabla_a_actualizar() {
@@ -208,27 +208,32 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
         // TODO add your handling code here:
+        try {
+            producto = new Producto();
+            actualizarTabla = new ServicioDeArranque();
 
-        producto = new Producto();
-        actualizarTabla = new ServicioDeArranque();
+            producto.setId(Integer.parseInt(tfID.getText()));
+            producto.setNombre(tfNombre.getText());
+            producto.setCantidad(Integer.parseInt(tfCantidad.getText()));
+            producto.setMarca(tfMarca.getText());
+            producto.setDescripcion(tfDescripcion.getText());
+            producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
+            producto.setPrecioVenta(Float.parseFloat(tfPrecioCompra.getText()));
+            producto.m_Categoria.setnombre((String) cmbCategoria.getSelectedItem());
+            producto.setEstado(4);
 
-        producto.setId(Integer.parseInt(tfID.getText()));
-        producto.setNombre(tfNombre.getText());
-        producto.setCantidad(Integer.parseInt(tfCantidad.getText()));
-        producto.setMarca(tfMarca.getText());
-        producto.setDescripcion(tfDescripcion.getText());
-        producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
-        producto.setPrecioVenta(Float.parseFloat(tfPrecioCompra.getText()));
-        producto.m_Categoria.setnombre((String) cmbCategoria.getSelectedItem());
-        producto.setEstado(4);
-        
-        tbl.agregarProducto(producto);
-        Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, getTabla_a_actualizar()));
+            tbl.agregarProducto(producto);
 
-        JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
-                "Producto agregado",
-                JOptionPane.INFORMATION_MESSAGE);
+            Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, getTabla_a_actualizar()));
+            Acceder_a_otraApp.arranque.getCuaderno_productos().getLista_productos().add(producto);
+            Acceder_a_otraApp.lista_con_productos = Acceder_a_otraApp.arranque.getCuaderno_productos().getLista_productos();
 
+            JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
+                    "Producto agregado",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Has insertado valores incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jGuardarActionPerformed
 
 

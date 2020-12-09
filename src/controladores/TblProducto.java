@@ -91,6 +91,29 @@ public class TblProducto extends Conexion {
 
     }
 
+    public static DefaultTableModel actualizarTablaInventario(ArrayList<Producto> inv) {
+        DefaultTableModel tabla_actualizada = new DefaultTableModel();
+
+         String[] titulos_tabla = {"iD", "Nombre", "Marca", "Precio Venta", "Precio compra", "Categoría", "Cantidad", "Descripción"};
+         tabla_actualizada.setColumnIdentifiers(titulos_tabla);
+        Object[] fila = new Object[8];
+
+        for (Producto p : inv) {
+            fila[0] = p.getId();
+            fila[1] = p.getNombre();
+            fila[2] = p.getMarca();
+            fila[3] = p.getPrecioCompra();
+            fila[4] = p.getPrecioCompra();
+            fila[5] = p.m_Categoria.getnombre();
+            fila[6] = p.getCantidad();
+            fila[7] = p.getDescripcion();
+            
+            tabla_actualizada.addRow(fila);
+        }
+        
+        return tabla_actualizada;
+    }
+
     public int sumarEntradas(int id, int cant) {
 
         ser = new ServicioDeArranque();

@@ -5,8 +5,12 @@
  */
 package jForm;
 
+import controladores.GestionProductos;
 import controladores.ServicioDeArranque;
 import controladores.TblCategoria;
+import controladores.TblProducto;
+import inventarioanlygui.Producto;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,26 +22,42 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     /**
      * Creates new form Acceder_a_otraApp
      */
+    public static ArrayList<Producto> lista_con_productos;
+    
     TblCategoria lista = new TblCategoria();
     AgregarProducto app;
 
     EliminarP eli = new EliminarP();
     AgregarEntradaP agre = new AgregarEntradaP();
-    EdiarProducto edicion = new EdiarProducto();
+    EdiarProducto edicion;
     CrearCategoria nueva_categoria = new CrearCategoria();
     AvisoActualización act_aviso = new AvisoActualización();
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
+    
+    GestionProductos administrar_productos;
 
-    ServicioDeArranque arranque = new ServicioDeArranque();
+    public static ServicioDeArranque arranque = new ServicioDeArranque();
 
     public Acceder_a_otraApp() {
+                
         initComponents();
 
         sdf.setModel(arranque.obtenerListaDeProductos());
         app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.getTabla());
+        lista_con_productos = arranque.getCuaderno_productos().getLista_productos();
 
     }
+
+    public ArrayList<Producto> getLista_con_productos() {
+        return lista_con_productos;
+    }
+
+    public void setLista_con_productos(ArrayList<Producto> lista_con_productos) {
+        this.lista_con_productos = lista_con_productos;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -232,7 +252,10 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Editar productos
-
+        
+        int fila_seleccionada = sdf.getSelectedRow();
+        edicion  = new EdiarProducto(getLista_con_productos().get(fila_seleccionada), fila_seleccionada);
+        
         this.dpDes.add(this.edicion);
         this.edicion.setVisible(true);
 
@@ -263,6 +286,8 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // Actualizar la base de datos.
+        administrar_productos = new GestionProductos();
+        administrar_productos.actualizarBDConProductos(lista_con_productos);
 
         // Muestra el diálogo cuando el proceso se haya completado y no tenga errores
         this.dpDes.add(this.act_aviso);
