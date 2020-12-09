@@ -31,6 +31,15 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
         lblCantidad.setText(p.getCantidad() + "");
         areaDescripcion.setText(p.getDescripcion());
 
+        // Insertar el texto modificable en los textFields
+        tfNombre.setText(p.getNombre());
+        tfMarca.setText(p.getMarca());
+        tfCompra.setText(p.getPrecioCompra() + "");
+        tfVenta.setText("" + p.getPrecioVenta());
+        tfiD.setText(p.getId() + "");
+        txtCantidadExistencia.setText(p.getCantidad() + "");
+        areaDescripcionNueva.append(p.getDescripcion());
+
         this.p = p;
         this.index_producto = i;
     }
@@ -357,7 +366,7 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Guardar cambios
         try {
-            
+
             p.setId(Integer.parseInt(tfiD.getText()));
             p.setNombre(tfNombre.getText());
             p.setMarca(tfMarca.getText());
@@ -370,7 +379,7 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
 
             Acceder_a_otraApp.lista_con_productos.set(index_producto, p);
             Acceder_a_otraApp.sdf.setModel(TblProducto.actualizarTablaInventario(Acceder_a_otraApp.lista_con_productos));
-        
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Has insertado valores incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
 

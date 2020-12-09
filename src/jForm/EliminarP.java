@@ -5,6 +5,9 @@
  */
 package jForm;
 
+import controladores.TblProducto;
+import inventarioanlygui.Producto;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Andrea Wood
@@ -14,8 +17,14 @@ public class EliminarP extends javax.swing.JInternalFrame {
     /**
      * Creates new form EliminarP
      */
+    Producto prod;
+    TblProducto tbl;
+    
     public EliminarP() {
         initComponents();
+        tbl = new TblProducto();
+        prod = new Producto();
+        
     }
 
     /**
@@ -78,6 +87,7 @@ public class EliminarP extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jEliminar;
