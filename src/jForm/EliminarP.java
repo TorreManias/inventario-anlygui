@@ -87,22 +87,7 @@ public class EliminarP extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-        
-       try{ 
-            int ID;
-          
-            ID = Integer.parseInt(tfId.getText());
-            
-            Acceder_a_otraApp.sdf.setModel(tbl.eliminarProducto(ID));
-            
-          } catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "Los valores ingresados no son validos",
-                   "Error",
-                   JOptionPane.ERROR_MESSAGE);
-         }    
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jEliminar;
