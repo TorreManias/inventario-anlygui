@@ -1,17 +1,14 @@
 package inventarioanlygui;
 
 public class Entrada {
-
-    private float cantidad;
+    
+    
+    private int cantidad;
     private String fecha;
     public Producto m_Producto;
 
     public Entrada() {
 
-    }
-
-    public int calcularMonto() {
-        return 0;
     }
 
     public float getcantidad() {
@@ -27,7 +24,7 @@ public class Entrada {
      *
      * @param newVal
      */
-    public void setcantidad(float newVal) {
+    public void setcantidad(int newVal) {
         cantidad = newVal;
     }
 

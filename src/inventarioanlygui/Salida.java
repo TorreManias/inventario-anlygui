@@ -10,10 +10,6 @@ public class Salida {
 
     }
 
-    public int calcularMonto() {
-        return 0;
-    }
-
     public float getcantidad() {
         return cantidad;
     }

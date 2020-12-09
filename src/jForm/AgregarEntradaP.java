@@ -5,8 +5,10 @@
  */
 package jForm;
 
+import controladores.TblProducto;
 import inventarioanlygui.Entrada;
 import inventarioanlygui.Producto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +21,8 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
      */
     Producto pro = new Producto();
     Entrada ent = new Entrada();
+    TblProducto tbl = new TblProducto();
+    
     public AgregarEntradaP() {
         initComponents();
     }
@@ -77,10 +81,10 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
                     .addComponent(tfCantidad)
                     .addComponent(tfFecha))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,9 +101,9 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,9 +123,18 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
     private void JAgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarEActionPerformed
         // TODO add your handling code here:
        
-        pro.setId(Integer.parseInt(tfID.getText()));
+        try{
+        int id, cant, cantidadT;
+        id = Integer.parseInt(tfID.getText());
         ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
+        cant = (int) ent.getcantidad();
         ent.setfecha(tfFecha.getText());
+        cantidadT = tbl.sumarEntradas(id, cant);
+        JOptionPane.showMessageDialog(null, cantidadT);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_JAgregarEActionPerformed
 
