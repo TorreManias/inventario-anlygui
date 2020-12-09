@@ -19,23 +19,28 @@ import javax.swing.table.DefaultTableModel;
 public class GestionProductos extends Conexion {
 
     Connection coneccionDB;
+
+    // Statement de SQL
     private PreparedStatement insertarProducto;
     private PreparedStatement actualizarProductos;
     private PreparedStatement buscarProductoPorID;
     private PreparedStatement buscarProductoPorNombre;
+    private PreparedStatement eliminarProducto;
 
     public GestionProductos() {
 
         try {
 
-            coneccionDB = this.conectar(); // Guardamos la conexion
-            System.out.println(coneccionDB.toString());
+            coneccionDB = this.conectar();
+
+            // Sentencias de SQL preparadas
             insertarProducto = coneccionDB.prepareStatement("INSERT into dbo.Producto(id, nombre, precioCompra, precioVenta, marca, categoria, cantidad, descripcion) VALUES (?,?,?,?,?,?,?,?)");
             actualizarProductos = coneccionDB.prepareStatement("UPDATE dbo.Producto "
                     + "SET id = ?, nombre = ?, precioCompra = ?, precioVenta = ?, marca = ?, categoria = ?, cantidad = ?, descripcion = ? "
                     + "WHERE id = ?");
             buscarProductoPorID = coneccionDB.prepareStatement("SELECT * from dbo.Producto WHERE id = ?");
             buscarProductoPorNombre = coneccionDB.prepareStatement("SELECT * from dbo.Producto WHERE nombre = ?");
+            eliminarProducto = coneccionDB.prepareStatement("DELETE from dbo.Producto WHERE id = ?");
 
         } catch (SQLException ex) {
             Logger.getLogger(GestionProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,6 +153,17 @@ public class GestionProductos extends Conexion {
                 break;
 
                 case 3: // Eliminar el producto
+                    try {
+
+                        eliminarProducto.setInt(1, p.getId());
+                        eliminarProducto.executeUpdate();
+                        
+                    } catch (SQLException e) {
+                        
+                        System.out.println(e.toString());
+
+                    }
+                    
                     productos_eliminados++;
                     break;
 
