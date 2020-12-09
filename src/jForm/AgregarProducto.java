@@ -28,7 +28,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     ServicioDeArranque actualizarTabla;
     DefaultTableModel tabla_a_actualizar;
     ServicioDeArranque arranque;
-    AgregarProducto app;
     
     public AgregarProducto(DefaultComboBoxModel lista, DefaultTableModel tabla_modelo) {
 
@@ -36,9 +35,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         cmbCategoria.setModel(lista);
         this.tabla_a_actualizar = tabla_modelo;
         tbl = new TblProducto();
-
-    
-
+        
     }
 
     public DefaultTableModel getTabla_a_actualizar() {
@@ -226,7 +223,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         producto.setEstado(4);
         
         tbl.agregarProducto(producto);
-        Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, tabla_a_actualizar));
+        Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, getTabla_a_actualizar()));
 
         JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
                 "Producto agregado",

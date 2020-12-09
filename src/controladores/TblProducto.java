@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  */
-
 public class TblProducto extends Conexion {
 
     public Producto m_Producto;
@@ -20,9 +19,9 @@ public class TblProducto extends Conexion {
 
     Connection coneccionDB;
     private PreparedStatement insertarProducto;
-    
-    
+
     ServicioDeArranque ser;
+
     public TblProducto() {
 
         lista_productos = new ArrayList<>();
@@ -52,9 +51,9 @@ public class TblProducto extends Conexion {
     }
 
     public void agregarProducto(Producto pro) {
-        
-       lista_productos.add(pro);
-        
+
+        lista_productos.add(pro);
+
     }
 
     public Producto buscarProducto() {
@@ -74,7 +73,6 @@ public class TblProducto extends Conexion {
     }
 
     public DefaultTableModel actualizarTablaInventario(Producto p, DefaultTableModel t) {
-        DefaultTableModel tabla_actualizada;
 
         // Fila nueva en la tabla
         Object[] fila = new Object[8];
@@ -88,18 +86,16 @@ public class TblProducto extends Conexion {
         fila[7] = p.getDescripcion();
 
         // Insertar la fila en la tabla actualizada.
-        tabla_actualizada = t;
-        tabla_actualizada.addRow(fila);
+        t.addRow(fila);
+        return t;
 
-        return tabla_actualizada;
-        
     }
 
     public int sumarEntradas(int id, int cant) {
 
         ser = new ServicioDeArranque();
         ser.obtenerListaDeProductos();
-        
+
         int idlista, cantidadlista = 0;
         System.out.println("Si");
 
@@ -120,10 +116,10 @@ public class TblProducto extends Conexion {
     }
 
     public int sumarSalidad(int id, int cant) {
-        
+
         ser = new ServicioDeArranque();
         ser.obtenerListaDeProductos();
-        
+
         int idlista, cantidadlista = 0;
         System.out.println("Si");
 

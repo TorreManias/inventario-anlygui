@@ -25,7 +25,6 @@ public class ServicioDeArranque extends Conexion {
 
     // Tabla de productos
     DefaultTableModel tabla;
-    
 
     // Conexion
     Connection conexion;
@@ -42,7 +41,6 @@ public class ServicioDeArranque extends Conexion {
 
         cuaderno_productos = new TblProducto();
         cuaderno_categorias = new TblCategoria();
-       
 
     }
 
@@ -61,19 +59,17 @@ public class ServicioDeArranque extends Conexion {
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
 
         try {
-            
+
             c = new Categoria();
             Statement listar = conexionCategorias.createStatement();
             ResultSet consulta_cateogrias = listar.executeQuery(seleccionar_categorias);
-            while(consulta_cateogrias.next()){
-                
+            while (consulta_cateogrias.next()) {
+
                 c.setnombre((String) consulta_cateogrias.getObject(1));
                 cuaderno_categorias.agregarCategoria(c);
                 modelo.addElement(c.getnombre());
             }
-            
-            
-            
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
@@ -86,7 +82,7 @@ public class ServicioDeArranque extends Conexion {
 
         Connection conexionProductos = this.conectar();
         DefaultTableModel unnombre = new DefaultTableModel();
-        
+
         try {
 
             Statement listar = conexionProductos.createStatement();
@@ -109,9 +105,9 @@ public class ServicioDeArranque extends Conexion {
                 p.m_Categoria.setnombre((String) consulta_productos.getObject(6));
                 p.setCantidad((int) consulta_productos.getObject(7));
                 p.setDescripcion((String) consulta_productos.getObject(8));
-                
+
                 p.setEstado(1);
-                
+
                 cuaderno_productos.getLista_productos().add(p);
 
             }
@@ -135,13 +131,12 @@ public class ServicioDeArranque extends Conexion {
 
                 unnombre.addRow(fila);
 
-                
             }
-
+            setTabla(unnombre);
         } catch (SQLException e) {
             System.out.println(e.toString());
         }
-        setTabla(unnombre);
+
         return unnombre;
 
     }
