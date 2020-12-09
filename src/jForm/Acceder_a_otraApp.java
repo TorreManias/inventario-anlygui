@@ -31,7 +31,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     AgregarEntradaP agre = new AgregarEntradaP();
     EdiarProducto edicion;
     CrearCategoria nueva_categoria = new CrearCategoria();
-    AvisoActualización act_aviso = new AvisoActualización();
+    AvisoActualización act_aviso;
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
     
@@ -287,8 +287,9 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // Actualizar la base de datos.
         administrar_productos = new GestionProductos();
-        administrar_productos.actualizarBDConProductos(lista_con_productos);
-
+        String resultado_actulizar = administrar_productos.actualizarBDConProductos(lista_con_productos);
+        act_aviso  = new AvisoActualización(resultado_actulizar);
+        
         // Muestra el diálogo cuando el proceso se haya completado y no tenga errores
         this.dpDes.add(this.act_aviso);
         this.act_aviso.setVisible(true);

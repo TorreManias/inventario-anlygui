@@ -36,7 +36,13 @@ public class GestionProductos extends Conexion {
 
     }
 
-    public void actualizarBDConProductos(ArrayList<Producto> lista) {
+    public String actualizarBDConProductos(ArrayList<Producto> lista) {
+        String resultado;
+
+        int productos_actualizados = 0;
+        int productos_nuevos = 0;
+        int productos_eliminados = 0;
+
         for (Producto p : lista) {
             int estado = p.getEstado();
             switch (estado) {
@@ -54,27 +60,32 @@ public class GestionProductos extends Conexion {
                     actualizarProductos.setString(6, p.m_Categoria.getnombre());
                     actualizarProductos.setInt(7, p.getCantidad());
                     actualizarProductos.setString(8, p.getDescripcion());
-
                     actualizarProductos.setInt(9, p.getId());
 
                     actualizarProductos.executeUpdate();
+                    productos_actualizados++;
 
                 } catch (SQLException ex) {
 
                     Logger.getLogger(GestionProductos.class.getName()).log(Level.SEVERE, null, ex);
 
                 }
-                    break;
-                    
+                break;
+
                 case 3: // Eliminar el producto
+                    productos_eliminados++;
                     break;
-                    
+
                 case 4: // Insertar el producto
                     insertarProducto(p.getId(), p.getNombre(), p.getPrecioCompra(), p.getPrecioVenta(), p.getMarca(), p.m_Categoria.getnombre(), p.getCantidad(), p.getDescripcion());
+                    productos_nuevos++;
                     break;
 
             }
         }
+        
+        resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos;
+        return resultado;
     }
 
     public int insertarProducto(int id, String nombre, float pCompra, float pVenta, String marca, String cat, int cantidad, String desc) {
