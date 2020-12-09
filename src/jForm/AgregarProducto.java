@@ -9,8 +9,10 @@ import controladores.TblProducto;
 import inventarioanlygui.Categoria;
 import inventarioanlygui.Producto;
 import javax.swing.DefaultComboBoxModel;
+import jForm.Acceder_a_otraApp;
+import controladores.ServicioDeArranque;
 import javax.swing.JOptionPane;
-import javax.swing.text.TabExpander;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,16 +23,25 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     Producto producto;
     Categoria cate;
     TblProducto tbl;
+    ServicioDeArranque actualizarTabla;
+    DefaultTableModel tabla_a_actualizar;
 
-    public AgregarProducto(DefaultComboBoxModel lista) {
+    public AgregarProducto(DefaultComboBoxModel lista, DefaultTableModel tabla_modelo) {
 
         initComponents();
         cmbCategoria.setModel(lista);
+        this.tabla_a_actualizar = tabla_modelo;
         tbl = new TblProducto();
 
     }
-    
-  
+
+    public DefaultTableModel getTabla_a_actualizar() {
+        return tabla_a_actualizar;
+    }
+
+    public void setTabla_a_actualizar(DefaultTableModel tabla_a_actualizar) {
+        this.tabla_a_actualizar = tabla_a_actualizar;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,7 +209,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     private void jGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarActionPerformed
         // TODO add your handling code here:
+
         producto = new Producto();
+        actualizarTabla = new ServicioDeArranque();
+
         producto.setId(Integer.parseInt(tfID.getText()));
         producto.setNombre(tfNombre.getText());
         producto.setCantidad(Integer.parseInt(tfCantidad.getText()));
@@ -207,13 +221,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         producto.setPrecioCompra(Float.parseFloat(tfPrecioCompra.getText()));
         producto.setPrecioVenta(Float.parseFloat(tfPrecioCompra.getText()));
         producto.m_Categoria.setnombre((String) cmbCategoria.getSelectedItem());
-        
+
         tbl.agregarProducto(producto);
-        
+        Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, tabla_a_actualizar));
+
         JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
                 "Producto agregado",
                 JOptionPane.INFORMATION_MESSAGE);
-        
+
     }//GEN-LAST:event_jGuardarActionPerformed
 
 

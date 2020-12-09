@@ -7,6 +7,7 @@ package jForm;
 
 import controladores.ServicioDeArranque;
 import controladores.TblCategoria;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +19,6 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
      * Creates new form Acceder_a_otraApp
      */
     TblCategoria lista = new TblCategoria();
-
     AgregarProducto app;
 
     EliminarP eli = new EliminarP();
@@ -33,10 +33,9 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     public Acceder_a_otraApp() {
 
-        app = new AgregarProducto(arranque.obtenerListaDeCategorias());
-
+        app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.obtenerListaDeProductos());
         initComponents();
-
+        sdf.setModel(arranque.obtenerListaDeProductos());
 
     }
 
@@ -52,9 +51,9 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         dpDes = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        javax.swing.JTable tableProductos = new javax.swing.JTable();
         jLabel44 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        sdf = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         mAgregarProducto = new javax.swing.JMenu();
         miApp = new javax.swing.JMenuItem();
@@ -83,35 +82,31 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        tableProductos.setAutoCreateRowSorter(true);
-        tableProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tableProductos.setModel(arranque.obtenerListaDeProductos());
-        tableProductos.setGridColor(new java.awt.Color(204, 255, 204));
-        jScrollPane1.setViewportView(tableProductos);
-
         jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel44.setText("Productos");
+
+        jScrollPane2.setViewportView(sdf);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel44)
+                .addGap(1051, 1051, 1051))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 825, Short.MAX_VALUE)
-                        .addComponent(jLabel44))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1048, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel44)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -227,10 +222,12 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAppActionPerformed
-        // TODO add your handling code here:
+        // Agrear producto
 
         this.dpDes.add(this.app);
         this.app.setVisible(true);
+        
+        
 
     }//GEN-LAST:event_miAppActionPerformed
 
@@ -324,6 +321,12 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         });
     }
 
+    public void actualizarTabla(DefaultTableModel tablaNueva) {
+
+        sdf.setModel(tablaNueva);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpDes;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -339,8 +342,9 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu mAgregarProducto;
     private javax.swing.JMenuItem miApp;
+    public static javax.swing.JTable sdf;
     // End of variables declaration//GEN-END:variables
 }

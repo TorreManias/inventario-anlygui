@@ -23,6 +23,9 @@ public class ServicioDeArranque extends Conexion {
     public Categoria c;
     public Producto p;
 
+    // Tabla de productos
+    DefaultTableModel tabla;
+
     // Conexion
     Connection conexion;
 
@@ -38,7 +41,16 @@ public class ServicioDeArranque extends Conexion {
 
         cuaderno_productos = new TblProducto();
         cuaderno_categorias = new TblCategoria();
+        tabla = new DefaultTableModel();
 
+    }
+
+    public DefaultTableModel getTabla() {
+        return tabla;
+    }
+
+    public void setTabla(DefaultTableModel tabla) {
+        this.tabla = tabla;
     }
 
     // Métodos propios
@@ -85,7 +97,6 @@ public class ServicioDeArranque extends Conexion {
     public DefaultTableModel obtenerListaDeProductos() {
 
         Connection conexionProductos = this.conectar();
-        DefaultTableModel tabla = new DefaultTableModel();
 
         try {
 

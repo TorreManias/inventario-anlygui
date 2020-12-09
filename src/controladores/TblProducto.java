@@ -2,10 +2,12 @@ package controladores;
 
 import inventarioanlygui.Producto;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  */
+
 public class TblProducto extends Conexion {
 
     public Producto m_Producto;
@@ -41,9 +43,6 @@ public class TblProducto extends Conexion {
 
     public void agregarProducto(Producto pro) {
         lista_productos.add(pro);
-        
-        System.out.println("Id: " + lista_productos.get(0).getId());
-       
     }
 
     public Producto buscarProducto() {
@@ -62,28 +61,46 @@ public class TblProducto extends Conexion {
         return 0;
     }
 
-    public ArrayList mostarProductos() {
-        return null;
+    public DefaultTableModel actualizarTablaInventario(Producto p, DefaultTableModel t) {
+        DefaultTableModel tabla_actualizada;
+
+        // Fila nueva en la tabla
+        Object[] fila = new Object[8];
+        fila[0] = p.getId();
+        fila[1] = p.getNombre();
+        fila[2] = p.getMarca();
+        fila[3] = p.getPrecioCompra();
+        fila[4] = p.getPrecioCompra();
+        fila[5] = p.m_Categoria.getid();
+        fila[6] = p.getCantidad();
+        fila[7] = p.getDescripcion();
+
+        // Insertar la fila en la tabla actualizada.
+        tabla_actualizada = t;
+        tabla_actualizada.addRow(fila);
+
+        return tabla_actualizada;
+        
     }
 
     public int sumarEntradas(int id, int cant) {
-        
+
         int idlista = 0, cantidadlista = 0;
         System.out.println("Si");
-        
-        for(Producto pro : this.getLista_productos()){
-            
+
+        for (Producto pro : this.getLista_productos()) {
+
             idlista = pro.getId();
             System.out.println("Id: " + idlista);
-            if(id == idlista){
-                
+            if (id == idlista) {
+
                 cantidadlista = pro.getId();
                 cantidadlista = cantidadlista + cant;
-                
+
             }
-            
+
         }
-        
+
         return cantidadlista;
     }
 
