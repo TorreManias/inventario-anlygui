@@ -107,7 +107,7 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
            lista_categorias.insertarCategoriaEnDB(nuevaCat);
         
            actualizadorCBM = lista_categorias.actualizarCBM(nuevaCat);
-           
+           ServicioDeArranque.cmbCategorias.addElement(categoria_nueva.getnombre());
            
         
        

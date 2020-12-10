@@ -11,6 +11,7 @@ import controladores.TblCategoria;
 import controladores.TblProducto;
 import inventarioanlygui.Producto;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,8 +26,8 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
      */
     public static ArrayList<Producto> lista_con_productos;
     public static DefaultTableModel tablita;
-    
-    
+    public static DefaultComboBoxModel tabla_completa_categorias;
+
     TblCategoria lista = new TblCategoria();
     AgregarProducto app;
     CrearCategoria crear;
@@ -39,24 +40,22 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     AvisoActualización act_aviso;
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
-    
-    
+
     GestionProductos administrar_productos;
 
     public static ServicioDeArranque arranque = new ServicioDeArranque();
 
     public Acceder_a_otraApp() {
-                
+
         initComponents();
-        
+
         p = new Producto();
-        
+        tabla_completa_categorias = arranque.obtenerListaDeCategorias();
         sdf.setModel(arranque.obtenerListaDeProductos());
-        app = new AgregarProducto(CrearCategoria.actualizadorCBM, arranque.getTabla());
         lista_con_productos = arranque.getCuaderno_productos().getLista_productos();
         tablita = arranque.getTabla();
     }
-    
+
     public ArrayList<Producto> getLista_con_productos() {
         return lista_con_productos;
     }
@@ -72,7 +71,6 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     public static void setTablita(DefaultTableModel tablita) {
         Acceder_a_otraApp.tablita = tablita;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -258,7 +256,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void miAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAppActionPerformed
         // Agrear producto
-
+        app = new AgregarProducto(CrearCategoria.actualizadorCBM, arranque.getTabla());
         this.dpDes.add(this.app);
         this.app.setVisible(true);
 
@@ -267,19 +265,19 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Editar productos
-        
-        try{
-        int fila_seleccionada = sdf.getSelectedRow();
-        edicion  = new EdiarProducto(getLista_con_productos().get(fila_seleccionada), fila_seleccionada);
-        
-        this.dpDes.add(this.edicion);
-        this.edicion.setVisible(true);
-        }catch(Exception ex){
-            
-            JOptionPane.showMessageDialog(this, "Selecione una fila o introduzca correctamente un valor", 
-                    "Error en Edicion", 
+
+        try {
+            int fila_seleccionada = sdf.getSelectedRow();
+            edicion = new EdiarProducto(getLista_con_productos().get(fila_seleccionada), fila_seleccionada);
+
+            this.dpDes.add(this.edicion);
+            this.edicion.setVisible(true);
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(this, "Selecione una fila o introduzca correctamente un valor",
+                    "Error en Edicion",
                     JOptionPane.ERROR_MESSAGE);
-            
+
         }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -309,10 +307,11 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // Actualizar la base de datos.
+        
         administrar_productos = new GestionProductos();
         String resultado_actulizar = administrar_productos.actualizarBDConProductos(lista_con_productos, TblProducto.getProductosEliminados());
-        act_aviso  = new AvisoActualización(resultado_actulizar);
-        
+        act_aviso = new AvisoActualización(resultado_actulizar);
+
         // Muestra el diálogo cuando el proceso se haya completado y no tenga errores
         this.dpDes.add(this.act_aviso);
         this.act_aviso.setVisible(true);

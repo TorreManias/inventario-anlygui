@@ -25,6 +25,9 @@ public class ServicioDeArranque extends Conexion {
 
     // Tabla de productos
     public static DefaultTableModel tabla;
+    
+    // ComboBox con las categorías
+    public static DefaultComboBoxModel cmbCategorias;
 
     // Conexion
     Connection conexion;
@@ -60,11 +63,21 @@ public class ServicioDeArranque extends Conexion {
         this.cuaderno_productos = cuaderno_productos;
     }
 
+    public static DefaultComboBoxModel getCmbCategorias() {
+        return cmbCategorias;
+    }
+
+    public static void setCmbCategorias(DefaultComboBoxModel cmbCategorias) {
+        ServicioDeArranque.cmbCategorias = cmbCategorias;
+    }
+    
+    
+
     // Métodos propios
     public DefaultComboBoxModel obtenerListaDeCategorias() {
 
         Connection conexionCategorias = this.conectar();
-        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
 
         try {
 
@@ -82,6 +95,7 @@ public class ServicioDeArranque extends Conexion {
             System.out.println(e.toString());
         }
 
+        ServicioDeArranque.cmbCategorias = modelo;
         return modelo;
 
     }

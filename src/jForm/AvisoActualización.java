@@ -5,6 +5,8 @@
  */
 package jForm;
 
+import java.util.Arrays;
+
 /**
  *
  * @author marco
@@ -15,6 +17,7 @@ public class AvisoActualización extends javax.swing.JInternalFrame {
     public AvisoActualización(String resultado) {
         initComponents();
         this.cantidad_de_elementos = resultado.split(",");
+        System.out.println(Arrays.toString(cantidad_de_elementos));
         lblModificados.setText(cantidad_de_elementos[0]);
         lblBorrados.setText(cantidad_de_elementos[1]);
         lblNuevos.setText(cantidad_de_elementos[2]);

@@ -157,6 +157,9 @@ public class GestionProductos extends Conexion {
                     break;
 
             }
+            
+            resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos + ",";
+            
         }
 
         for (Producto p : lista_eliminados) {
@@ -178,10 +181,10 @@ public class GestionProductos extends Conexion {
                 break;
             }
 
-            resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos;
+            resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos + ",";
             
         }
-        
+
         return resultado;
 
     }
