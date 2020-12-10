@@ -40,6 +40,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     AvisoActualización act_aviso;
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
+    BorrarCategoria borrar = new BorrarCategoria();
 
     GestionProductos administrar_productos;
 
@@ -91,6 +92,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         mAgregarProducto = new javax.swing.JMenu();
         miApp = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        menuEliminarCategoria = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -179,6 +181,14 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
             }
         });
         mAgregarProducto.add(jMenuItem7);
+
+        menuEliminarCategoria.setText("Eliminar categoria");
+        menuEliminarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEliminarCategoriaActionPerformed(evt);
+            }
+        });
+        mAgregarProducto.add(menuEliminarCategoria);
 
         jMenuItem5.setText("Agregar Entrada");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +317,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // Actualizar la base de datos.
-        
+
         administrar_productos = new GestionProductos();
         String resultado_actulizar = administrar_productos.actualizarBDConProductos(lista_con_productos, TblProducto.getProductosEliminados());
         act_aviso = new AvisoActualización(resultado_actulizar);
@@ -332,6 +342,15 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         this.agrS.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void menuEliminarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarCategoriaActionPerformed
+        // Eliminar una categoría
+
+        
+        this.dpDes.add(borrar);
+        this.borrar.setVisible(true);
+
+    }//GEN-LAST:event_menuEliminarCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,6 +410,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JMenu mAgregarProducto;
+    private javax.swing.JMenuItem menuEliminarCategoria;
     private javax.swing.JMenuItem miApp;
     public static javax.swing.JTable sdf;
     // End of variables declaration//GEN-END:variables
