@@ -79,11 +79,11 @@ public class BorrarCategoria extends javax.swing.JInternalFrame {
         // Borrar categoría seleccionada.
         
         int seleccionado = cmbCategoriasActuales.getSelectedIndex();
-        
         String nombre_seleccionado = (String) cmbCategoriasActuales.getSelectedItem();
+        
         ServicioDeArranque.cmbCategorias.removeElementAt(seleccionado);
         tabla_categorias.eliminarCategoria(nombre_seleccionado);
-        
+        cmbCategoriasActuales.removeItemAt(seleccionado);
         
         
         
