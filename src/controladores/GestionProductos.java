@@ -115,8 +115,8 @@ public class GestionProductos extends Conexion {
         return resultado;
     }
 
-    public String actualizarBDConProductos(ArrayList<Producto> lista) {
-        String resultado;
+    public String actualizarBDConProductos(ArrayList<Producto> lista, ArrayList<Producto> lista_eliminados) {
+        String resultado = "";
 
         int productos_actualizados = 0;
         int productos_nuevos = 0;
@@ -151,21 +151,6 @@ public class GestionProductos extends Conexion {
                 }
                 break;
 
-                case 3: // Eliminar el producto
-                    try {
-
-                        eliminarProducto.setInt(1, p.getId());
-                        eliminarProducto.executeUpdate();
-                        
-                    } catch (SQLException e) {
-                        
-                        System.out.println(e.toString());
-
-                    }
-                    
-                    productos_eliminados++;
-                    break;
-
                 case 4: // Insertar el producto
                     insertarProducto(p.getId(), p.getNombre(), p.getPrecioCompra(), p.getPrecioVenta(), p.getMarca(), p.m_Categoria.getnombre(), p.getCantidad(), p.getDescripcion());
                     productos_nuevos++;
@@ -174,8 +159,31 @@ public class GestionProductos extends Conexion {
             }
         }
 
-        resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos;
+        for (Producto p : lista_eliminados) {
+            int estado = p.getEstado();
+            switch (estado) {
+                case 3: // Eliminar el producto
+                    try {
+
+                    eliminarProducto.setInt(1, p.getId());
+                    int n = eliminarProducto.executeUpdate();
+                        System.out.println(n);
+                } catch (SQLException e) {
+
+                    System.out.println(e.toString());
+
+                }
+
+                productos_eliminados++;
+                break;
+            }
+
+            resultado = "" + productos_actualizados + "," + productos_eliminados + "," + productos_nuevos;
+            
+        }
+        
         return resultado;
+
     }
 
     public int insertarProducto(int id, String nombre, float pCompra, float pVenta, String marca, String cat, int cantidad, String desc) {

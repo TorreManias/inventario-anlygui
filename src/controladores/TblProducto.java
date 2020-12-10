@@ -28,6 +28,7 @@ public class TblProducto extends Conexion {
     public TblProducto() {
 
         lista_productos = new ArrayList<>();
+        productosEliminados = new ArrayList<>();
 
     }
 
@@ -89,7 +90,8 @@ public class TblProducto extends Conexion {
             if (id == idlista) {
 
                 cant += i;
-//                productosEliminados.add(Acceder_a_otraApp.lista_con_productos.get(cant));
+                Acceder_a_otraApp.lista_con_productos.get(cant).setEstado(3);
+                productosEliminados.add(Acceder_a_otraApp.lista_con_productos.get(cant));
                 Acceder_a_otraApp.lista_con_productos.remove(cant);
             }
            

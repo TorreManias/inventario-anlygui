@@ -5,16 +5,20 @@
  */
 package jForm;
 
+import controladores.TblCategoria;
+import inventarioanlygui.Categoria;
+
 /**
  *
  * @author marco
  */
 public class CrearCategoria extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form CrearCategoria
-     */
+    TblCategoria lista_categorias;
+    Categoria categoria_nueva;
+    
     public CrearCategoria() {
+        lista_categorias = new TblCategoria();
         initComponents();
     }
 
@@ -74,7 +78,8 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // Crear categorías
         
-        
+        categoria_nueva = new Categoria();
+        lista_categorias.agregarCategoria(categoria_nueva);
         
     }//GEN-LAST:event_btnCrearActionPerformed
 

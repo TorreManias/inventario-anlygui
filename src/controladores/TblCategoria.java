@@ -36,20 +36,4 @@ public class TblCategoria extends Conexion {
         lista_categoria.add(c);
     }
 
-    public Categoria buscarCategoria() {
-        return null;
-    }
-
-    public int eliminarCategoria() {
-        return 0;
-    }
-
-    public int modificarCategoria() {
-        return 0;
-    }
-
-    public ArrayList mostrarCategorias() {
-        return null;
-    }
-
 }

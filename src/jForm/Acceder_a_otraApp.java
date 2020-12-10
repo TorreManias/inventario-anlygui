@@ -308,7 +308,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // Actualizar la base de datos.
         administrar_productos = new GestionProductos();
-        String resultado_actulizar = administrar_productos.actualizarBDConProductos(lista_con_productos);
+        String resultado_actulizar = administrar_productos.actualizarBDConProductos(lista_con_productos, TblProducto.getProductosEliminados());
         act_aviso  = new AvisoActualización(resultado_actulizar);
         
         // Muestra el diálogo cuando el proceso se haya completado y no tenga errores
