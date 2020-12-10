@@ -11,6 +11,7 @@ import controladores.TblCategoria;
 import controladores.TblProducto;
 import inventarioanlygui.Producto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,10 +24,12 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
      * Creates new form Acceder_a_otraApp
      */
     public static ArrayList<Producto> lista_con_productos;
+    public static DefaultTableModel tablita;
     
     TblCategoria lista = new TblCategoria();
     AgregarProducto app;
 
+    Producto p;
     EliminarP eli = new EliminarP();
     AgregarEntradaP agre = new AgregarEntradaP();
     EdiarProducto edicion;
@@ -35,6 +38,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     BuscadorProducto buscador = new BuscadorProducto();
     AgregarSalida agrS = new AgregarSalida();
     
+    
     GestionProductos administrar_productos;
 
     public static ServicioDeArranque arranque = new ServicioDeArranque();
@@ -42,13 +46,15 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     public Acceder_a_otraApp() {
                 
         initComponents();
-
+        
+        p = new Producto();
+        
         sdf.setModel(arranque.obtenerListaDeProductos());
         app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.getTabla());
         lista_con_productos = arranque.getCuaderno_productos().getLista_productos();
-
+        tablita = arranque.getTabla();
     }
-
+    
     public ArrayList<Producto> getLista_con_productos() {
         return lista_con_productos;
     }
@@ -56,7 +62,14 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     public void setLista_con_productos(ArrayList<Producto> lista_con_productos) {
         this.lista_con_productos = lista_con_productos;
     }
-    
+
+    public static DefaultTableModel getTablita() {
+        return tablita;
+    }
+
+    public static void setTablita(DefaultTableModel tablita) {
+        Acceder_a_otraApp.tablita = tablita;
+    }
     
 
     /**
@@ -253,11 +266,19 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Editar productos
         
+        try{
         int fila_seleccionada = sdf.getSelectedRow();
         edicion  = new EdiarProducto(getLista_con_productos().get(fila_seleccionada), fila_seleccionada);
         
         this.dpDes.add(this.edicion);
         this.edicion.setVisible(true);
+        }catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(this, "Selecione una fila o introduzca correctamente un valor", 
+                    "Error en Edicion", 
+                    JOptionPane.ERROR_MESSAGE);
+            
+        }
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 

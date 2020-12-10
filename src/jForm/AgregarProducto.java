@@ -231,6 +231,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
                     "Producto agregado",
                     JOptionPane.INFORMATION_MESSAGE);
+            tfCantidad.setText("");
+            tfCantidad.requestFocus();
+            tfDescripcion.setText("");
+            tfDescripcion.requestFocus();
+            tfID.setText("");
+            tfID.requestFocus();
+            tfMarca.setText("");
+            tfMarca.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Has insertado valores incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
         }

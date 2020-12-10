@@ -8,6 +8,7 @@ package jForm;
 import controladores.TblProducto;
 import inventarioanlygui.Producto;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Andrea Wood
@@ -19,9 +20,11 @@ public class EliminarP extends javax.swing.JInternalFrame {
      */
     Producto prod;
     TblProducto tbl;
+    DefaultTableModel tablita;
     
     public EliminarP() {
         initComponents();
+        tablita = new DefaultTableModel();
         tbl = new TblProducto();
         prod = new Producto();
         
@@ -46,6 +49,11 @@ public class EliminarP extends javax.swing.JInternalFrame {
         jLabel1.setText("Id:");
 
         jEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Grupo 3.png"))); // NOI18N
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,22 +95,30 @@ public class EliminarP extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
         // TODO add your handling code here:
-        
-       try{ 
-            int ID;
-          
-            ID = Integer.parseInt(tfId.getText());
-            
-            Acceder_a_otraApp.sdf.setModel(tbl.eliminarProducto(ID));
-            
-          } catch(NumberFormatException ex){
-           JOptionPane.showMessageDialog(this, "Los valores ingresados no son validos",
-                   "Error",
-                   JOptionPane.ERROR_MESSAGE);
-         }    
-    }
+        if (Acceder_a_otraApp.tablita.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,
+                    "No hay más Productos que eliminar", "Tabla Vacia",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                int ID;
+
+                ID = Integer.parseInt(tfId.getText());
+
+                tfId.setText("");
+                tfId.requestFocus();
+                
+                Acceder_a_otraApp.sdf.setModel(tbl.eliminarProducto(ID));
+                prod.setEstado(3);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Los valores ingresados no son validos", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jEliminar;

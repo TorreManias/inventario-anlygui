@@ -5,6 +5,7 @@
  */
 package jForm;
 
+import controladores.ServicioDeArranque;
 import inventarioanlygui.Producto;
 import controladores.TblProducto;
 import javax.swing.JOptionPane;
@@ -17,9 +18,12 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
 
     Producto p;
     int index_producto;
+    ServicioDeArranque arranque;
 
     public EdiarProducto(Producto p, int i) {
         initComponents();
+        
+        arranque = new ServicioDeArranque();
 
         // Cambiar los labels
         lblMarca.setText(p.getMarca());
@@ -31,6 +35,8 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
         lblCantidad.setText(p.getCantidad() + "");
         areaDescripcion.setText(p.getDescripcion());
 
+        cmbCategoriaNueva.setModel(arranque.obtenerListaDeCategorias());
+        
         this.p = p;
         this.index_producto = i;
     }

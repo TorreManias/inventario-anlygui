@@ -121,21 +121,26 @@ public class AgregarSalida extends javax.swing.JInternalFrame {
 
     private void JAgregarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarSActionPerformed
         // TODO add your handling code here:}
-        int id = 0, cant = 0, cantidadT;
         try{
-        
+        int id, cant;
         id = Integer.parseInt(tfID.getText());
         sal.setCantidad(Integer.parseInt(tfCantidad.getText()));
         cant = sal.getCantidad();
         sal.setFecha(tfFecha.getText());
+        Acceder_a_otraApp.sdf.setModel(tbl.sumarSalidad(id, cant));
+        tfID.setText("");
+        tfID.requestFocus();
+        tfCantidad.setText("");
+        tfCantidad.requestFocus();
+        tfFecha.setText("");
+        tfFecha.requestFocus();
         }catch(NumberFormatException ex){
             
             JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide", 
                     "Error", JOptionPane.ERROR_MESSAGE);
             
         }
-        cantidadT = tbl.sumarSalidad(id, cant);
-        JOptionPane.showMessageDialog(null, cantidadT);
+        
         
     }//GEN-LAST:event_JAgregarSActionPerformed
 

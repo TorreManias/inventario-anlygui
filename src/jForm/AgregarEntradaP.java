@@ -19,6 +19,7 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarEntradaP
      */
+    
     Producto pro = new Producto();
     Entrada ent = new Entrada();
     TblProducto tbl = new TblProducto();
@@ -124,13 +125,19 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        
         try{
-        int id, cant, cantidadT;
+        int id, cant;
         id = Integer.parseInt(tfID.getText());
         ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
         cant = (int) ent.getcantidad();
         ent.setfecha(tfFecha.getText());
-        cantidadT = tbl.sumarEntradas(id, cant);
-        JOptionPane.showMessageDialog(null, cantidadT);
+        Acceder_a_otraApp.sdf.setModel(tbl.sumarEntradas(id, cant));
+        tfID.setText("");
+        tfID.requestFocus();
+        tfCantidad.setText("");
+        tfCantidad.requestFocus();
+        tfFecha.setText("");
+        tfFecha.requestFocus();
+        
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide", 
                     "Error", JOptionPane.ERROR_MESSAGE);
