@@ -5,8 +5,11 @@
  */
 package jForm;
 
+import controladores.ServicioDeArranque;
 import controladores.TblCategoria;
 import inventarioanlygui.Categoria;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +17,29 @@ import inventarioanlygui.Categoria;
  */
 public class CrearCategoria extends javax.swing.JInternalFrame {
 
+    ServicioDeArranque arranque;
     TblCategoria lista_categorias;
     Categoria categoria_nueva;
+    public static DefaultComboBoxModel<String> actualizadorCBM;
+    AgregarProducto app;
     
     public CrearCategoria() {
         lista_categorias = new TblCategoria();
         initComponents();
+        actualizadorCBM = new DefaultComboBoxModel<>();
+        arranque = new ServicioDeArranque(); 
+        
+       
     }
+
+    public static DefaultComboBoxModel<String> getActualizadorCBM() {
+        return actualizadorCBM;
+    }
+
+    public static void setActualizadorCBM(DefaultComboBoxModel<String> actualizadorCBM) {
+        CrearCategoria.actualizadorCBM = actualizadorCBM;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +51,7 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        tfNombre = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
 
         setClosable(true);
@@ -56,7 +75,7 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -65,7 +84,7 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(btnCrear)
@@ -78,8 +97,20 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // Crear categorías
         
-        categoria_nueva = new Categoria();
-        lista_categorias.agregarCategoria(categoria_nueva);
+            
+           categoria_nueva = new Categoria();
+           String nuevaCat;
+           nuevaCat = tfNombre.getText();
+           categoria_nueva.setnombre(nuevaCat);
+           
+           lista_categorias.agregarCategoria(categoria_nueva);
+           lista_categorias.insertarCategoriaEnDB(nuevaCat);
+        
+           actualizadorCBM = lista_categorias.actualizarCBM(nuevaCat);
+           
+           
+        
+       
         
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -87,6 +118,6 @@ public class CrearCategoria extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField tfNombre;
     // End of variables declaration//GEN-END:variables
 }

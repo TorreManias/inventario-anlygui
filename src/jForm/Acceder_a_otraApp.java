@@ -26,8 +26,10 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
     public static ArrayList<Producto> lista_con_productos;
     public static DefaultTableModel tablita;
     
+    
     TblCategoria lista = new TblCategoria();
     AgregarProducto app;
+    CrearCategoria crear;
 
     Producto p;
     EliminarP eli = new EliminarP();
@@ -50,7 +52,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
         p = new Producto();
         
         sdf.setModel(arranque.obtenerListaDeProductos());
-        app = new AgregarProducto(arranque.obtenerListaDeCategorias(), arranque.getTabla());
+        app = new AgregarProducto(CrearCategoria.actualizadorCBM, arranque.getTabla());
         lista_con_productos = arranque.getCuaderno_productos().getLista_productos();
         tablita = arranque.getTabla();
     }
