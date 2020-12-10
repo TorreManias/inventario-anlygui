@@ -4,13 +4,7 @@ import inventarioanlygui.Producto;
 import jForm.Acceder_a_otraApp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -75,21 +69,8 @@ public class TblProducto extends Conexion {
     }
 
     // Métodos propios
-    public int actualizarBD() {
-        return 0;
-    }
-
     public void agregarProducto(Producto pro) {
-
         lista_productos.add(pro);
-    }
-
-    public Producto buscarProducto() {
-        return null;
-    }
-
-    public float calcularExistencia() {
-        return 0;
     }
 
     public DefaultTableModel eliminarProducto(int id) {
@@ -139,10 +120,6 @@ public class TblProducto extends Conexion {
         }
 
         return Tabla;
-    }
-   
-    public int modificarProducto() {
-        return 0;
     }
 
     public DefaultTableModel actualizarTablaInventario(Producto p, DefaultTableModel t) {
@@ -207,6 +184,7 @@ public class TblProducto extends Conexion {
                 cantidadSuma = Acceder_a_otraApp.lista_con_productos.get(cantidad).getCantidad();
                 cantidadSuma += cant;
                 Acceder_a_otraApp.lista_con_productos.get(cantidad).setCantidad(cantidadSuma);
+                Acceder_a_otraApp.lista_con_productos.get(cantidad).setEstado(2);
             }
            
         }
@@ -259,6 +237,7 @@ public class TblProducto extends Conexion {
                 cantidadSuma = Acceder_a_otraApp.lista_con_productos.get(cantidad).getCantidad();
                 cantidadSuma = cantidadSuma - cant;
                 Acceder_a_otraApp.lista_con_productos.get(cantidad).setCantidad(cantidadSuma);
+                Acceder_a_otraApp.lista_con_productos.get(cantidad).setEstado(2);
             }
            
         }

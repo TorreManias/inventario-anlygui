@@ -37,6 +37,16 @@ public class EdiarProducto extends javax.swing.JInternalFrame {
 
         cmbCategoriaNueva.setModel(arranque.obtenerListaDeCategorias());
         
+        // Cambiar los textFields con la misma información del producto
+        
+        tfNombre.setText(p.getNombre());
+        tfMarca.setText(p.getMarca());
+        tfiD.setText(p.getId() + "");
+        tfCompra.setText(p.getPrecioCompra() + "");
+        tfVenta.setText(p.getPrecioVenta() + "");
+        areaDescripcion.setText(p.getDescripcion());
+        txtCantidadExistencia.setText(p.getCantidad() + "");
+        
         this.p = p;
         this.index_producto = i;
     }

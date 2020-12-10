@@ -6,42 +6,30 @@ public class Salida {
     private String fecha;
     public Producto m_Producto;
 
-    public Salida() {
+    public Salida() {}
 
-    }
-
-    public float getcantidad() {
+    public float getCantidad() {
         return cantidad;
     }
 
-    public String getfecha() {
+    public void setCantidad(float cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getFecha() {
         return fecha;
     }
 
-    /**
-     *
-     * @param newVal
-     */
-    public void setcantidad(float newVal) {
-        cantidad = newVal;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    /**
-     *
-     * @param newVal
-     */
-    public void setfecha(String newVal) {
-        fecha = newVal;
+    public Producto getM_Producto() {
+        return m_Producto;
     }
 
-    /**
-     *
-     * @param newVal
-     */
-    
+    public void setM_Producto(Producto m_Producto) {
+        this.m_Producto = m_Producto;
+    }
 
-    /**
-     *
-     * @param newVal
-     */
 }

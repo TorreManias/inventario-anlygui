@@ -9,6 +9,8 @@ import controladores.TblProducto;
 import inventarioanlygui.Entrada;
 import inventarioanlygui.Producto;
 import javax.swing.JOptionPane;
+import controladores.GestionEntradasSalidas;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,13 +21,15 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarEntradaP
      */
-    
     Producto pro = new Producto();
     Entrada ent = new Entrada();
     TblProducto tbl = new TblProducto();
-    
+    GestionEntradasSalidas administrador_de_movimientos;
+
     public AgregarEntradaP() {
         initComponents();
+        administrador_de_movimientos = new GestionEntradasSalidas();
+        tablaEntradas.setModel(administrador_de_movimientos.mostrarEntradas());
     }
 
     /**
@@ -45,6 +49,8 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
         JAgregarE = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         tfFecha = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaEntradas = new javax.swing.JTable();
 
         setClosable(true);
         setResizable(true);
@@ -77,72 +83,95 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
                     .addComponent(jLabel37)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfID, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(tfCantidad)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(tfCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(tfID, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfFecha))
-                .addContainerGap())
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(33, 33, 33)
                 .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel37)
-                    .addComponent(tfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel37)
+                            .addComponent(tfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(tfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(JAgregarE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        tablaEntradas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablaEntradas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void JAgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JAgregarEActionPerformed
-        // TODO add your handling code here:
-       
-        try{
-        int id, cant;
-        id = Integer.parseInt(tfID.getText());
-        ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
-        cant = (int) ent.getcantidad();
-        ent.setfecha(tfFecha.getText());
-        Acceder_a_otraApp.sdf.setModel(tbl.sumarEntradas(id, cant));
-        tfID.setText("");
-        tfID.requestFocus();
-        tfCantidad.setText("");
-        tfCantidad.requestFocus();
-        tfFecha.setText("");
-        tfFecha.requestFocus();
-        
-        }catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide", 
+        // Agregar entrada.
+
+        try {
+            int id, cant;
+            id = Integer.parseInt(tfID.getText());
+            ent.setcantidad(Integer.parseInt(tfCantidad.getText()));
+            cant = (int) ent.getcantidad();
+            ent.setfecha(tfFecha.getText());
+            Acceder_a_otraApp.sdf.setModel(tbl.sumarEntradas(id, cant));
+            tfID.setText("");
+            tfID.requestFocus();
+            tfCantidad.setText("");
+            tfCantidad.requestFocus();
+            tfFecha.setText("");
+            tfFecha.requestFocus();
+
+            administrador_de_movimientos.insertarNuevaEntradaProducto((int) ent.getcantidad(), ent.getfecha());
+            tablaEntradas.setModel(administrador_de_movimientos.actualizarTablaDeEntradas(ent, (DefaultTableModel) tablaEntradas.getModel()));
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Lo Ingresado no es lo que se pide",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_JAgregarEActionPerformed
 
 
@@ -152,6 +181,8 @@ public class AgregarEntradaP extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaEntradas;
     private javax.swing.JTextField tfCantidad;
     private javax.swing.JTextField tfFecha;
     private javax.swing.JTextField tfID;

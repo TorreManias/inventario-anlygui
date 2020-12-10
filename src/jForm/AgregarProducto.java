@@ -9,10 +9,7 @@ import controladores.TblProducto;
 import inventarioanlygui.Categoria;
 import inventarioanlygui.Producto;
 import javax.swing.DefaultComboBoxModel;
-import jForm.Acceder_a_otraApp;
 import controladores.ServicioDeArranque;
-import static jForm.Acceder_a_otraApp.sdf;
-import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -224,9 +221,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
             tbl.agregarProducto(producto);
 
-            Acceder_a_otraApp.sdf.setModel(tbl.actualizarTablaInventario(producto, getTabla_a_actualizar()));
-            Acceder_a_otraApp.arranque.getCuaderno_productos().getLista_productos().add(producto);
-            Acceder_a_otraApp.lista_con_productos = Acceder_a_otraApp.arranque.getCuaderno_productos().getLista_productos();
+            Acceder_a_otraApp.lista_con_productos.add(producto);
+            Acceder_a_otraApp.sdf.setModel(TblProducto.actualizarTablaInventario(Acceder_a_otraApp.lista_con_productos));
 
             JOptionPane.showMessageDialog(this, "El producto ha sido guardado",
                     "Producto agregado",
