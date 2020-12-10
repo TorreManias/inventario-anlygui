@@ -27,7 +27,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     DefaultComboBoxModel<String> combo;
 
-    public AgregarProducto(DefaultComboBoxModel lista, DefaultTableModel tabla_modelo) {
+    public AgregarProducto(DefaultTableModel tabla_modelo) {
         arranque = new ServicioDeArranque();
         
         initComponents();
@@ -237,6 +237,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
             tfID.requestFocus();
             tfMarca.setText("");
             tfMarca.requestFocus();
+            tfNombre.setText("");
+            tfPrecioCompra.setText("");
+            tfPrecioVenta.setText("");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Has insertado valores incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);

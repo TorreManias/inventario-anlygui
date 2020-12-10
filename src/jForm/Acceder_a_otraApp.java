@@ -256,7 +256,7 @@ public class Acceder_a_otraApp extends javax.swing.JFrame {
 
     private void miAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAppActionPerformed
         // Agrear producto
-        app = new AgregarProducto(CrearCategoria.actualizadorCBM, arranque.getTabla());
+        app = new AgregarProducto(arranque.getTabla());
         this.dpDes.add(this.app);
         this.app.setVisible(true);
 

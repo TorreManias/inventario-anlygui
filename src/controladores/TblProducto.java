@@ -131,7 +131,7 @@ public class TblProducto extends Conexion {
         fila[0] = p.getId();
         fila[1] = p.getNombre();
         fila[2] = p.getMarca();
-        fila[3] = p.getPrecioCompra();
+        fila[3] = p.getPrecioVenta();
         fila[4] = p.getPrecioCompra();
         fila[5] = p.m_Categoria.getnombre();
         fila[6] = p.getCantidad();
@@ -154,7 +154,7 @@ public class TblProducto extends Conexion {
             fila[0] = p.getId();
             fila[1] = p.getNombre();
             fila[2] = p.getMarca();
-            fila[3] = p.getPrecioCompra();
+            fila[3] = p.getPrecioVenta();
             fila[4] = p.getPrecioCompra();
             fila[5] = p.m_Categoria.getnombre();
             fila[6] = p.getCantidad();
